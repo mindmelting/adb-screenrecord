@@ -1,0 +1,24 @@
+{
+  "name": "adb-screenrecord",
+  "version": "1.0.0",
+  "description": "",
+  "main": "adb-record.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mindmelting/adb-screenrecord"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mindmelting/adb-screenrecord/issues"
+  },
+  "homepage": "https://github.com/mindmelting/adb-screenrecord",
+  "dependencies": {
+    "adbkit": "^2.1.6",
+    "bluebird": "^2.9.7",
+    "colors": "^1.0.3"
+  }
+}

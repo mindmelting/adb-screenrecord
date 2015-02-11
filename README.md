@@ -5,7 +5,7 @@
 ```javascript
 node adb-record.js record
 ```
-Records screens of all connected devices. To stop recording kill the node process ```CMD-C```
+Records screens of all connected devices. To stop recording kill the node process ```CTRL-C```
 
 ```javascript
 node adb-record.js pull

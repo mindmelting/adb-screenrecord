@@ -4,10 +4,8 @@ var client = adb.createClient();
 var colors = require('colors');
 var fs = require('fs');
 
-function record() {
-    console.log('Terminate this node process to stop recording'.bold.red);
-
-    client.listDevices().then(function(devices) {
+function getDevices() {
+    return client.listDevices().then(function(devices) {
         var numDevices = 1;
         return Promise.map(devices, function(device) {
             return client.getProperties(device.id).then(function(props) {
@@ -17,7 +15,13 @@ function record() {
                 };
             });
         });
-    }).then(function(devicesData) {
+    });
+}
+
+function record() {
+    console.log('Terminate this node process to stop recording'.bold.red);
+
+    getDevices().then(function(devicesData) {
         devicesData.forEach(function(deviceData, index) {
             console.log(deviceData.deviceName);
             client.shell(deviceData.device.id, 'screenrecord /sdcard/Movies/' + deviceData.device.id + '.mp4');
@@ -26,19 +30,21 @@ function record() {
 }
 
 function pull() {
-    client.listDevices().then(function(devices) {
-        return Promise.map(devices, function(device) {
+    getDevices().then(function(devicesData) {
+        return Promise.map(devicesData, function(deviceData) {
+            var device = deviceData.device,
+                deviceName = deviceData.deviceName;
             return client.pull(device.id, '/sdcard/Movies/' + device.id + '.mp4').then(function(transfer) {
                 return new Promise(function(resolve, reject) {
-                    var fn = device.id + '.mp4';
+                    var fn = deviceName.replace(' ', '_') + '.mp4';
 
                     transfer.on('progress', function(stats) {
                       console.log('[%s] Pulled %d bytes so far',
-                        device.id,
+                        deviceName,
                         stats.bytesTransferred);
                     });
                     transfer.on('end', function() {
-                      console.log('[%s] Pull complete', device.id);
+                      console.log('[%s] Pull complete', deviceName);
                       resolve(device.id);
                     });
                     transfer.on('error', reject);

@@ -1,6 +1,10 @@
 # adb-screenrecord
 
-# Instructions
+## Pre-requisites
+Android Debug Bridge - http://developer.android.com/tools/help/adb.html  
+USB Debugging mode has to be enabled on all devices
+
+## Instructions
 
 ```javascript
 node adb-record.js record

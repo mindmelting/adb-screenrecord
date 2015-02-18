@@ -1,11 +1,15 @@
 # adb-screenrecord
 
-# Installation
+## Pre-requisites
+Android Debug Bridge - http://developer.android.com/tools/help/adb.html  
+USB Debugging mode has to be enabled on all devices
+
+## Installation
 ```javascript
 npm install -g adb-screenrecord
 ```
 
-# Instructions
+## Instructions
 
 ```javascript
 adb-screenrecord record

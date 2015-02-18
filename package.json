@@ -1,7 +1,7 @@
 {
   "name": "adb-screenrecord",
-  "version": "1.0.1",
-  "description": "",
+  "version": "1.0.2",
+  "description": "Records the screens of all connected android devices. Automatically pulls down video files.",
   "bin": {
     "adb-screenrecord": "bin/adb-screenrecord"
   },

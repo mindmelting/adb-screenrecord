@@ -1,8 +1,10 @@
 {
   "name": "adb-screenrecord",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
-  "main": "adb-record.js",
+  "bin": {
+    "adb-screenrecord": "bin/adb-screenrecord"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,7 +12,7 @@
     "type": "git",
     "url": "https://github.com/mindmelting/adb-screenrecord"
   },
-  "author": "",
+  "author": "Lawrence Hunt",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/mindmelting/adb-screenrecord/issues"
